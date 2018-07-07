@@ -1,6 +1,27 @@
 .col-4{
-	box-shadow: 0 0 5px;
+	border: 4px;
+	 box-shadow: 0 0 5px #666;
+	 padding-top: 20px;
+	 background-color: white;
+	 padding-bottom: 20px;
 }
 .col-8{
-	box-shadow: 0 0 5px;
+	border: 4px;
+	 box-shadow: 0 0 5px #666;
+	 padding-top: 20px;
+	 background-color: white;
+	 padding-bottom: 20px;
+}
+.document{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.row{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.document{
+	padding-left: 20px;
+	padding-right: 20px;
 }
