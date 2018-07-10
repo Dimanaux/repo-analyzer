@@ -1,19 +1,24 @@
+/*body {*/
+    /*background-image: url(../../static/images/bg.jpg);*/
+    /*background-size: cover;*/
+/*}*/
 
-.col-8{
-	 padding-top: 20px;
-	 background-color: white;
-	 padding-bottom: 20px;
-}
-.document{
-	padding-left: 20px;
-	padding-right: 20px;
+#main_container {
+    margin-top: 30vh;
+    background-color: black;
 }
 
-body{
-	padding-left: 40px;
-	padding-right: 40px;
+.icon-bg {
+    background-color: white;
+    border-radius: 50%;
+
+    border: none;
+    outline: none;
 }
-.document{
-	padding-left: 20px;
-	padding-right: 20px;
+
+.icon {
+    width: 10vw;
+    border-radius: 50%;
 }
+
+
