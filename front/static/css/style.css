@@ -21,4 +21,21 @@
     border-radius: 50%;
 }
 
+#input_key_secret {
+	margin-top: 30vh;
+}
+
+.title-name {
+	transition-duration: 1s;
+	text-align: center;
+	align-content: center;
+	align-items: center;
+	color: black;
+}
+
+.title-name :hover, :action, :visited {
+	transition-duration: 1s;
+	color: black;
+	text-decoration: underline;
+}
 
