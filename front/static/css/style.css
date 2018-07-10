@@ -21,7 +21,7 @@
     border-radius: 50%;
 }
 
-#input_key_secret {
+.indented {
 	margin-top: 30vh;
 }
 
@@ -33,9 +33,15 @@
 	color: black;
 }
 
-.title-name :hover, :action, :visited {
-	transition-duration: 1s;
+.title-name :hover, :visited {
 	color: black;
 	text-decoration: underline;
 }
 
+.title-name :active {
+    color: black;
+}
+
+.instruction {
+
+}
