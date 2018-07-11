@@ -46,7 +46,12 @@
 
 }
 
-.header {
-    background-color: #24292e;
-    color: white;
+.button{
+    margin-top: 5vh;
+}
+
+
+.listOfStudent{
+    margin-top: 20vh;
+    text-align: center;
 }
