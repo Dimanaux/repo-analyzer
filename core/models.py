@@ -5,19 +5,31 @@ from django.db import models
 
 # Create your models here.
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Task(models.Model):
+    task_set = models.ForeignKey('TaskSet', on_delete=models.CASCADE)
 
-    key = models.CharField(max_length=18)
-    secret = models.CharField(max_length=32)
+    title = models.CharField(max_length=120)
+    description = models.TextField()
 
-    def get_token(self):
-        pass
-        # todo: get token from bitbucket
-
-    def refresh_token(self):
-        pass
-        # todo: optional?
+    time_from = models.DateTimeField()
+    time_to = models.DateTimeField()
 
     def __str__(self):
-        return str(self.user)
+        return str(self.title)
+
+
+class TaskSet(models.Model):
+    author = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+
+    time_from = models.DateTimeField()
+    time_to = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.title)
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
