@@ -2,6 +2,10 @@
     /*background-image: url(../../static/images/bg.jpg);*/
     /*background-size: cover;*/
 /*}*/
+body{
+
+}
+
 
 #main_container {
     margin-top: 30vh;
@@ -54,4 +58,8 @@
 .listOfStudent{
     margin-top: 20vh;
     text-align: center;
+}
+.deadline{
+    outline-color: black;
+    outline: 1px solid #666; /* Параметры рамки */
 }
