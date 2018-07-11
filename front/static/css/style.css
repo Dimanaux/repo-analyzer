@@ -1,4 +1,4 @@
-/*body {*/
+﻿/*body {*/
     /*background-image: url(../../static/images/bg.jpg);*/
     /*background-size: cover;*/
 /*}*/
@@ -59,7 +59,4 @@ body{
     margin-top: 20vh;
     text-align: center;
 }
-.deadline{
-    outline-color: black;
-    outline: 1px solid #666; /* Параметры рамки */
-}
+
