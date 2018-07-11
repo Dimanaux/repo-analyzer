@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Repo Analyzer</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Repo Analyzer</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
