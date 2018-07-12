@@ -13,6 +13,20 @@
 
 <div class="navbar navbar-dark bg-dark">
     <a href="#" class="navbar-brand">Repo Analyzer</a>
+    {% if user.is_authenticated %}
+
+        <span class="navbar-text">
+            <span class="navbar-text">
+                <a href="#" class="nav-link">{{ user.username }}</a>
+            </span>
+            <span class="navbar-text">
+                <a href="{% url 'logout' %}" class="nav-link">logout</a>
+            </span>
+        </span>
+
+    {% else %}
+        <a class="nav-link" href="/login/">login</a>
+    {% endif %}
 </div>
 
 <div class="container">
