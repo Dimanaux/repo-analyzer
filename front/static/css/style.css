@@ -3,7 +3,11 @@
     /*background-size: cover;*/
 /*}*/
 body{
+    background-color: whitesmoke;
+}
 
+.img-fluid{
+    outline: 1px solid #666;
 }
 
 
@@ -26,7 +30,7 @@ body{
 }
 
 .indented {
-	margin-top: 30vh;
+	margin-top: 10vh;
 }
 
 .title-name {
@@ -46,10 +50,6 @@ body{
     color: black;
 }
 
-.instruction {
-
-}
-
 .button{
     margin-top: 5vh;
 }
@@ -60,3 +60,6 @@ body{
     text-align: center;
 }
 
+h4{
+    text-align: left;
+}

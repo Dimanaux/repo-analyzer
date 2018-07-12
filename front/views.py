@@ -13,18 +13,13 @@ def login_page(request):
     return render(request, 'front/login.html', {})
 
 
-def login(request):
-    method: str = request.method
-    if method == 'POST':
-        pass
-        # todo
-    elif method == 'GET':
-        return login_page(request)
+def task_set(request):
+    return render(request, 'front/TaskSet.html', {})
 
 
 def index(request):
     # todo create main page
-    return redirect('test/')
+    return render(request, 'front/bitbucket.html', {})
 
 
 def test(request):
@@ -33,3 +28,7 @@ def test(request):
 
 def profile_view(request):
     return redirect('index')
+
+
+def students_list(request):
+    return render(request, 'front/listOfStudents.html', {})

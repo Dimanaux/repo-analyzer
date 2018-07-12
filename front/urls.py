@@ -13,6 +13,9 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('logout/', views.logout_view, name='logout'),
 
+    path('task-set/', views.task_set, name='task-set'),
+    path('students-list/', views.students_list, name='students-list'),
+
     # last pattern
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
 ]

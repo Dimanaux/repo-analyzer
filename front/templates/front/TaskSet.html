@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Analyzer</title>
+{% extends 'front/base.html' %}
 
-    <meta charset="utf-8">
-
-    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-</head>
-
-
+{% block content %}
 <div class="container" ng-app="app">
     <div class="row" style="margin-top: 10vh">
 
         <div class="col-lg-6 col-lg-offset-3" ng-controller="ParticipantsCtrl as Participants">
 
-            <form name="formParticipant{{$index}}"
+            <form name="formParticipant"
                   ng-repeat="participant in Participants.list"
                   ng-submit="Participants.add()"
-                  ng-class="{'has-error': formParticipant{{$index}}.name.$invalid}">
+                  ng-class="{'has-error': formParticipant.name.$invalid}">
 
                 <input class="form-control" name="name"
                        ng-model="participant.name"
                        placeholder="Добавьте задание"
                        required>
-                <span ng-messages="formParticipant{{$index}}.name.$error"
-                      ng-show="formParticipant{{$index}}.name.$invalid" class="help-block">
+                <span ng-messages="formParticipant.name.$error"
+                      ng-show="formParticipant.name.$invalid" class="help-block">
  </span>
             </form>
             <div class="row">
@@ -36,8 +25,10 @@
             </div>
             <div class="row">
                 <div class="col"></div>
-                <button class="btn btn-primary" ng-click="Participants.add()" style="margin-top: 5vh;">Продолжить
-                </button>
+
+                <a href="{% url 'students-list' %}">
+                    <button class="btn btn-primary" style="margin-top: 5vh;">Продолжить</button>
+                </a>
             </div>
 
 
@@ -83,6 +74,4 @@
     </div>
 
 </div>
-
-
-</html>
+{% endblock %}

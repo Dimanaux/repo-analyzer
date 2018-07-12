@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Analyzer</title>
+{% extends 'front/base.html' %}
 
-    <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-</head>
-<body>
-<div class="container align-items-center col-12">
-
+{% block content %}
     <!-- KEY:SECRET INPUT FIELD -->
     <div class="row indented">
+        <div class="col"></div>
+        <div class="col-10">
+            <h1 class="text-center">Введите данные приложения Bitbucket</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row indented">
+
         <div class="col-2"></div>
 
         <div class="col">
@@ -36,43 +33,85 @@
         <div class="col"></div>
         <div class="col"></div>
         <div class="col">
-            <button type="button" class="btn btn-primary">Далее</button>
+            <a href="{% url 'task-set' %}">
+                <button type="button" href="https://google.com" class="btn btn-primary">Далее</button>
+            </a>
         </div>
     </div>
-<div class="row indented">
-                <div class="col title-name" id="instruction-tittle">
-                    <h1><a class="title-name" href="#instruction-title">Что от меня хотят</a></h1>
+
+    <div class="row indented">
+        <div class="col title-name" id="instruction-tittle">
+            <h1><a class="title-name" href="/#instruction-title">Что от меня хотят</a></h1>
+        </div>
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 col-lg-6 text-center text-lg-right pt-3">
+                    <p class="lead"><h4>Перейдите на <a href="https://bitbucket.org">Bitbucket</a> и войдите в свой
+                    аккаунт </h4</p>
                 </div>
-    <div class='container'>
-        <div class='row mt-5'>
-            <div class='col-12 col-lg-6 text-center text-lg-right pt-3'>
-                <h2 class='mb-4'>1. </h2>
-                <p class='lead'>От основ до реальных проектов по четырём направлениям: JS Backend, JS Frontend, PHP и Java.</p>
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100" src="../../static/images/screenshots/screenshot-step-1.png">
+                </div>
             </div>
-            <div class='col-12 col-lg-6'>
-            <img alt='' class='img-fluid' height='100' src='https://cdn2.hexlet.io/assets/screenshots/stack-5f16f43586a3a5e205dd3549841e0fb94c3020180ec28c6f680faa10437e61c8.png'>
+            <hr class="my-5">
+            <div class="row mt-3 flex-column-reverse flex-lg-row">
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100"
+                         src="../../static/images/screenshots/screenshot-step-2.png">
+                </div>
+                <div class="col-12 col-lg-6 text-center text-lg-left pt-3">
+                    <p class="lead"><h4>Шаг 2.</h4></p>
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="row mt-3">
+                <div class="col-12 col-lg-6 text-center text-lg-right pt-2">
+                    <p class="lead"><h4>Шаг 3</h4></p>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100"
+                         src="../../static/images/screenshots/screenshot-step-3.png">
+                </div>
+            </div>
+
+
+            <hr class="my-5">
+            <div class="row mt-3 flex-lg-row">
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100"
+                         src="../../static/images/screenshots/screenshot-step-4.png">
+                </div>
+                <div class="col-12 col-lg-6 text-center text-lg-left pt-3">
+                    <h2 class="mb-4">Инструкция 4</h2>
+                    <p class="lead">Видео-уроки и текстовые материалы, с иллюстрациями и интерактивными блоками.</p>
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="row mt-3">
+                <div class="col-12 col-lg-6 text-center text-lg-right pt-2">
+                    <h2 class="mb-4">Инструкция 5</h2>
+                    <p class="lead">Практические задания в реальной среде разработки прямо в браузере, с автоматической
+                        проверкой и отчетами. Никаких симуляторов и игрушек, настоящий Linux в контейнере.</p>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100"
+                         src="../../static/images/screenshots/screenshot-step-5.png">
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="row mt-3 flex-column-reverse flex-lg-row">
+                <div class="col-12 col-lg-6">
+                    <img class="img-fluid" height="100"
+                         src="../../static/images/screenshots/screenshot-step-6.png">
+                </div>
+                <div class="col-12 col-lg-6 text-center text-lg-left pt-3">
+                    <h2 class="mb-4">Инструкция 6</h2>
+                    <p class="lead"></p>
+                </div>
             </div>
         </div>
-        <hr class='my-5'>
-<div class='row mt-3 flex-column-reverse flex-lg-row'>
-<div class='col-12 col-lg-6'>
-<img alt='' class='img-fluid' height='100' src='https://cdn2.hexlet.io/assets/screenshots/video-091342cc9af87aa01dcdf2cde2fc3cd266b2cc5a8f1b2ce4f00b7ee85cfd0e4f.png'>
-</div>
-<div class='col-12 col-lg-6 text-center text-lg-left pt-3'>
-<h2 class='mb-4'>2. Видео и конспекты</h2>
-<p class='lead'>Видео-уроки и текстовые материалы, с иллюстрациями и интерактивными блоками.</p>
-</div>
-</div>
-        <hr class='my-5'>
-<div class='row mt-3'>
-<div class='col-12 col-lg-6 text-center text-lg-right pt-2'>
-<h2 class='mb-4'>3. Упражнения</h2>
-<p class='lead'>Практические задания в реальной среде разработки прямо в браузере, с автоматической проверкой и отчетами. Никаких симуляторов и игрушек, настоящий Linux в контейнере.</p>
-</div>
-<div class='col-12 col-lg-6'>
-<img alt='' class='img-fluid' height='100' src='https://cdn2.hexlet.io/assets/screenshots/exercise-cba39f80c7563a84054096d683b4e5c3470e6042cb4d40417b5339fe15cd2b90.gif'>
-</div>
-</div>
+
     </div>
-</div>
-</body>
+
+{% endblock %}
