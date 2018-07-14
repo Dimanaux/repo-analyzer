@@ -6,6 +6,10 @@ from repo_analyzer.settings import BASE_DIR
 
 from datetime import datetime, timedelta
 
+"""
+simple facade for GitPython lib
+"""
+
 
 def create_dir(path: str):
     """
@@ -88,3 +92,16 @@ def datetime(commit: Commit):
         datetime: date and time of the commit
     """
     return commit.committed_datetime
+
+
+def time_delta(commit: Commit):
+    """
+    Get time delta of the commit and his parent
+
+    Args:
+        commit (Commit): what commit to explore
+
+    Returns:
+        timedelta: time between commit and his parent
+    """
+    return commit.committed_datetime - commit.parents[0].commited_datetime
