@@ -81,7 +81,7 @@ def commits(repo: Repo, branch: str = 'master'):
     return list(repo.iter_commits(branch))
 
 
-def datetime(commit: Commit):
+def date_time(commit: Commit):
     """
     Get datetime object representing the time the commit was created
 
