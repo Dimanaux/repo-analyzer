@@ -1,3 +1,31 @@
+from django.contrib.auth.models import User
+
 from django.db import models
 
+
 # Create your models here.
+
+class Task(models.Model):
+    task_set = models.ForeignKey('TaskSet', on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+
+    time_from = models.DateTimeField()
+    time_to = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.title)
+
+
+class TaskSet(models.Model):
+    author = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+
+    time_from = models.DateTimeField()
+    time_to = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.title)
