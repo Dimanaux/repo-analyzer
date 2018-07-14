@@ -106,3 +106,7 @@ venv.bak/
 # pycharm project settings
 .idea/
 
+# downloaded repos
+res/*
+
+
