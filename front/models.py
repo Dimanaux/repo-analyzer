@@ -5,6 +5,7 @@ from django.db import models
 
 class TaskSet(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    number = models.IntegerField()
 
     title = models.CharField(max_length=120)
     description = models.TextField()
@@ -18,6 +19,7 @@ class TaskSet(models.Model):
 
 class Task(models.Model):
     task_set = models.ForeignKey(TaskSet, on_delete=models.CASCADE)
+    number = models.IntegerField()
 
     title = models.CharField(max_length=120)
     description = models.TextField()
