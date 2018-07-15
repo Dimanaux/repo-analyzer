@@ -51,7 +51,7 @@ body{
 }
 
 .button{
-    margin-top: 5vh;
+	border-radius: 0px;
 }
 
 
@@ -62,4 +62,23 @@ body{
 
 h4{
     text-align: left;
+}
+
+.nameOfTaskSet{
+    margin-left: 5vh;
+    margin-top: 5vh;
+}
+
+.description{
+    padding-bottom: 10vh;
+    margin-top: 5vh;
+}
+.image :hover{
+    outline: 1px solid black;
+}
+.image :active{
+    box-shadow: 0 0 5px 1px;
+}
+.btn{
+    outline: none;
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyzer</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="row">
+    <div class="col-6 nameOfTaskSet">
+        <form role="form">
+            <div class="form-group">
+                <input name="name" type="text" class="form-control" placeholder="Название тасксета"/>
+            </div>
+            <div class="form-group">
+                <textarea name="comment" class="form-control description" placeholder="Описание"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="col-2 nameOfTaskSet">
+        <form role="form">
+            <div class="form-group">
+                <label>начало выполнения</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>дедлайн</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="form-group"><input type="submit" class="btn btn-info" value="Задать таски"></div>
+        </form>
+    </div>
+</div>
+</body>
+
+
+</html>

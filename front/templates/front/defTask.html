@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyzer</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</head>
+<body>
+<form role="form">
+    <div class="form-group nameOfTaskSet">
+        <div class="row">
+            <div class="col-6">
+                <input name="name" type="text" class="form-control" placeholder="Название таска"/>
+            </div>
+            <div class="col-2">
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-2 image">
+                <img src="../../static/images/x.png" onclick="removeColumn()">
+            </div>
+        </div>
+    </div>
+
+    <div class="row nameOfTaskSet">
+        <div class="col-1">
+            <input type="submit" class="btn btn-info" value="Анализ">
+        </div>
+        <div class="col-6"></div>
+        <div class="col-1"><button class="btn btn-secondary" onclick="addColumn()">+</button></div>
+    </div>
+</form>
+</body>
+<script>
+    function addColumn() {
+        alert('add column');
+    }
+
+    function removeColumn() {
+        alert('remove column');
+    }
+
+</script>
+
+
+
+</html>
