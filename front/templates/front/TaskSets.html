@@ -1,0 +1,27 @@
+{% extends 'front/base.html' %}
+
+{% block title %}
+    Task Set List
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            {% for ts in tasksets %}
+                <div class="row">
+                    <div class="col">
+                        ts.author
+                    </div>
+                    <div class="col">
+                        ts.title
+                    </div>
+                    <div class="col">
+                        ts.description
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+

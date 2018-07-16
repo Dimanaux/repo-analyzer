@@ -5,6 +5,7 @@ from front import views
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='front/login.html'), name='login'),
+    path('accounts/profile/', views.task_sets),
     path('logout/', views.logout_view, name='logout'),
 
     path('tasksets/', views.task_sets, name='tasksets'),
