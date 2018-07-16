@@ -1,10 +1,11 @@
+import os
+from datetime import datetime, timedelta
+
 from git import Repo
 from git.objects.commit import Commit
 
-import os
+from front.models import Task
 from repo_analyzer.settings import BASE_DIR
-
-from datetime import datetime, timedelta
 
 """
 simple facade for GitPython lib
@@ -78,7 +79,7 @@ def commits(repo: Repo, branch: str = 'master'):
     Returns:
         list<commit>: repo commits from chosen branch
     """
-    return list(repo.iter_commits(branch))
+    return repo.iter_commits(branch)
 
 
 def date_time(commit: Commit):
@@ -105,3 +106,10 @@ def time_delta(commit: Commit):
         timedelta: time between commit and his parent
     """
     return commit.committed_datetime - commit.parents[0].commited_datetime
+
+
+def has_commit(repository: Repo, task: Task):
+    for c in commits(repository):
+        if task.time_from < c.committed_datetime < task.time_to:
+            return True
+    return False

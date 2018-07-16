@@ -3,10 +3,13 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from front import repo
 from front.models import (
     TaskSet,
     Task,
 )
+
+from git import Repo
 
 
 def logout_view(request):
@@ -36,8 +39,7 @@ def task_set(request, number: int):
         try:
             taskset = TaskSet.objects.filter(author=request.user).get(number=number)
         except TaskSet.DoesNotExist:
-            # todo create 404 error page
-            # todo optional
+            # todo create 404 error page (optional)
             return HttpResponse("<h1>PAGE NOT FOUND PLZ CREATE AN OBJECT:)</h1>")
 
         tasks_query = Task.objects.filter(task_set=taskset).order_by('number')
@@ -57,7 +59,7 @@ def index(request):
     return redirect('tasksets')
 
 
-def test(request):
+def test(request, number: int):
     if request.method == 'GET':
         return render(
             request,
@@ -67,9 +69,27 @@ def test(request):
             }
         )
     elif request.method == 'POST':
-        # todo test
-        pass
+        taskset: TaskSet = TaskSet.objects.get(number=number)
+        tasks: list = list(Task.objects.filter(task_set=taskset))
 
+        url: str = request.POST.get('link')
+        repository: Repo = repo.clone(url)
+
+        commits: list = list(repo.commits(repository))
+
+        # result = [True for t in tasks if ]
+
+        # todo
+
+        return render(
+            request,
+            'front/Test.html',
+            {
+                'user': request.user,
+                'tasks': result,
+                'show_tests': True,
+            }
+        )
 
 def create_task_set(request):
     user: User = request.user
@@ -79,7 +99,7 @@ def create_task_set(request):
     elif request.method == 'GET':
         return render(
             request,
-            'front/newTaskSet.html',
+            'front/NewTaskSet.html',
             {
                 'user': user,
             }
@@ -87,15 +107,16 @@ def create_task_set(request):
     elif request.method == 'POST':
         number = TaskSet.objects.filter(author=user).count() + 1
 
+        time_from = request.POST.get('time_from', '')  # todo parse date
+        time_to = request.POST.get('time_to', '')
+
         taskset = TaskSet(
             author=user,
             number=number,
-
-            title=request.POST.get('title'),  # todo
-            description=request.POST.get('description'),  # todo
-
-            time_from=request.POST.get('time_from'),  # todo
-            time_to=request.POST.get('time_to'),  # todo
+            title=request.POST.get('title'),
+            description=request.POST.get('description'),
+            time_from=time_from,
+            time_to=time_to,
         )
         taskset.save()
         return redirect('taskset/' + number)
@@ -105,20 +126,27 @@ def create_task(request, number: int):
     user: User = request.user
     if not user.is_authenticated:
         return redirect('login')
+    elif request.method == 'GET':
+        return render(
+            request,
+            'front/NewTask.html',
+            {
+                'user': user,
+            }
+        )
     elif request.method == 'POST':
-        # todo create task
+        ts = TaskSet.objects.get(number=number)
+        num = Task.objects.filter(task_set=task_set).count() + 1
 
         time_from = request.POST.get('time_from', '')  # todo parse date
-        time_to = request.POST.get('time_to')
+        time_to = request.POST.get('time_to', '')
 
         task = Task(
-            task_set=TaskSet.objects.get(number=number),
-
-            title=request.POST.get('title', 'title'),  # todo
-            description=request.POST.get('description', ''),  # todo
-
-            time_to=time_to,  # todo
-            time_from=time_from,  # todo
+            task_set=ts,
+            number=num,
+            title=request.POST.get('title', 'title'),
+            description=request.POST.get('description', ''),
+            time_to=time_to,
+            time_from=time_from,
         )
-
         task.save()
