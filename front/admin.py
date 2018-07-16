@@ -5,5 +5,5 @@ from front.models import (
     TaskSet,
 )
 
-admin.register(Task)
-admin.register(TaskSet)
+admin.site.register(Task)
+admin.site.register(TaskSet)

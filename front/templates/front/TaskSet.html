@@ -1,77 +1,19 @@
 {% extends 'front/base.html' %}
 
 {% block content %}
-<div class="container" ng-app="app">
-    <div class="row" style="margin-top: 10vh">
-
-        <div class="col-lg-6 col-lg-offset-3" ng-controller="ParticipantsCtrl as Participants">
-
-            <form name="formParticipant"
-                  ng-repeat="participant in Participants.list"
-                  ng-submit="Participants.add()"
-                  ng-class="{'has-error': formParticipant.name.$invalid}">
-
-                <input class="form-control" name="name"
-                       ng-model="participant.name"
-                       placeholder="Добавьте задание"
-                       required>
-                <span ng-messages="formParticipant.name.$error"
-                      ng-show="formParticipant.name.$invalid" class="help-block">
- </span>
-            </form>
-            <div class="row">
-                <div class="col"></div>
-                <button class="btn btn-default" ng-click="Participants.add()" style="margin-top: 5vh;">+</button>
-            </div>
-            <div class="row">
-                <div class="col"></div>
-
-                <a href="{% url 'students-list' %}">
-                    <button class="btn btn-primary" style="margin-top: 5vh;">Продолжить</button>
-                </a>
-            </div>
-
-
-            <script src="https://code.angularjs.org/1.3.20/angular.js"></script>
-            <script src="https://code.angularjs.org/1.3.20/angular-messages.js"></script>
-
-            <!--
-            <script src="https://code.angularjs.org/1.4.7/angular.js"></script>
-            <script src="https://code.angularjs.org/1.4.7/angular-messages.js"></script>
-            -->
-
-            <script>
-                var app = angular.module('app', ['ngMessages']);
-
-                function Participants() {
-                    var self = this;
-
-                    self.list = [
-                        {name: ''}
-                    ];
-
-                    self.add = function () {
-                        var newParticipant = {name: ''};
-                        self.list.push(newParticipant);
-                    }
-                }
-
-                app.controller('ParticipantsCtrl', Participants);
-            </script>
-
-        </div>
-
-        <div class="col-2"></div>
-        <div class="col-4">
+    <h1>{{ taskset.title }}</h1>
+    {% for task in tasks %}
+        <div class="row">
+            <div class="col">{{ task.number }} : {{ task.title }}</div>
+            <div class="col">{{ task.description }}</div>
             <div class="col">
-                <form>
-                    <div class="form-group">
-                        <input type="date" class="form-control" placeholder="введите дату дедлайна">
-                    </div>
-                </form>
+                <div>
+                    {{ task.time_from }}
+                </div>
+                <div>
+                    {{ task.time_to }}
+                </div>
             </div>
         </div>
-    </div>
-
-</div>
+    {% endfor %}
 {% endblock %}

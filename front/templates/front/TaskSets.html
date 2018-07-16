@@ -5,23 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col">
-            {% for ts in tasksets %}
-                <div class="row">
-                    <div class="col">
-                        ts.author
-                    </div>
-                    <div class="col">
-                        ts.title
-                    </div>
-                    <div class="col">
-                        ts.description
-                    </div>
-                </div>
-            {% endfor %}
+    {% for ts in tasksets %}
+        <div class="row">
+            <div class="col">
+                {{ ts.author }}
+            </div>
+            <div class="col">
+                <a href="/tasksets/{{ ts.number }}/">
+                    {{ ts.title }}
+                </a>
+            </div>
+            <div class="col">
+                {{ ts.description }}
+            </div>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
 
 
