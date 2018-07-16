@@ -1,5 +1,9 @@
 {% extends 'front/base.html' %}
 
+{% block title %}
+    Taskset #{{ taskset.number }}
+{% endblock %}
+
 {% block content %}
     <h1>{{ taskset.title }}</h1>
     {% for task in tasks %}
