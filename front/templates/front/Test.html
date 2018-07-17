@@ -3,7 +3,6 @@
 {% block content %}
     <h1>taskset #{{ taskset.number }} "{{ taskset.title }}" test</h1>
 
-
     <div class="row">
         <form action="#" method="POST" enctype="multipart/form-data" class="row">
             {% csrf_token %}
@@ -17,10 +16,9 @@
 
 
     <div class="container" style="display: {{ display }}">
-
         {% for task, result in results %}
             <div class="row">
-                <div class="col">{{ task.number }} : {{ task.title }}</div>
+                <div class="col">{{ task.number }}. {{ task.title }}</div>
                 <div class="col">
                     <div>{{ task.time_from }}</div>
                     <div>{{ task.time_to }}</div>
@@ -36,8 +34,5 @@
 
             </div>
         {% endfor %}
-
-
     </div>
-
 {% endblock %}
