@@ -10,35 +10,52 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+
 </head>
 <body>
 <form role="form">
-    <div class="form-group nameOfTaskSet">
-        <div class="row">
-            <div class="col-6">
-                <input name="name" type="text" class="form-control" placeholder="Название таска"/>
-            </div>
-            <div class="col-2">
-                <input type="date" class="form-control">
-            </div>
-            <div class="col-2 image">
-                <img src="../../static/images/x.png" onclick="removeColumn()">
-            </div>
-        </div>
-    </div>
+
+
+    <script language="javascript">
+var items=1;
+function AddItem() {
+  div=document.getElementById("items");
+  button=document.getElementById("add");
+  items++;
+  newitem="<strong>Поле " + items + ": </strong>";
+  newitem+="<input type=\"text\" name=\"item" + items;
+  newitem+="\" size=\"45\"><br>";
+  newnode=document.createElement("span");
+  newnode.innerHTML=newitem;
+  div.insertBefore(newnode,button);
+}
+</script>
+</head>
+<body>
+<form name="form1">
+<div ID="items">
+<strong>Поле 1: </strong><input type="text" name="item1" size="45"><br>
+<input type="button" value="Добавить поле" onClick="AddItem();" ID="add">
+</div>
+</form>
+</body>
+
 
     <div class="row nameOfTaskSet">
         <div class="col-1">
             <input type="submit" class="btn btn-info" value="Анализ">
         </div>
         <div class="col-6"></div>
-        <div class="col-1"><button class="btn btn-secondary" onclick="addColumn()">+</button></div>
+        <div class="col-1">
+            <button class="btn btn-secondary" onclick="addColumn()">+new</button>
+        </div>
     </div>
 </form>
 </body>
 <script>
+    var items = 1;
     function addColumn() {
-        alert('add column');
+        alert('new column');
     }
 
     function removeColumn() {
@@ -46,7 +63,6 @@
     }
 
 </script>
-
 
 
 </html>

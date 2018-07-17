@@ -12,31 +12,29 @@
 
 </head>
 <body>
-<div class="row">
-    <div class="col-6 nameOfTaskSet">
-        <form role="form">
+<form role="form" method="POST">
+    <div class="row">
+        <div class="col-6 nameOfTaskSet">
             <div class="form-group">
-                <input name="name" type="text" class="form-control" placeholder="Название тасксета"/>
+                <input name="title" type="text" class="form-control" placeholder="Название тасксета"/>
             </div>
             <div class="form-group">
-                <textarea name="comment" class="form-control description" placeholder="Описание"></textarea>
+                <textarea name="description" class="form-control description" placeholder="Описание"></textarea>
             </div>
-        </form>
-    </div>
-    <div class="col-2 nameOfTaskSet">
-        <form role="form">
+        </div>
+        <div class="col-2 nameOfTaskSet">
             <div class="form-group">
                 <label>начало выполнения</label>
-                <input type="date" class="form-control">
+                <input  name="from" type="date" class="form-control">
             </div>
             <div class="form-group">
                 <label>дедлайн</label>
-                <input type="date" class="form-control">
+                <input name="to" type="date" class="form-control">
             </div>
-            <div class="form-group"><input type="submit" class="btn btn-info" value="Задать таски"></div>
-        </form>
+            <div class="form-group"><input type="submit" class="btn btn-info" value="Сохранить и задать task"></div>
+        </div>
     </div>
-</div>
+</form>
 </body>
 
 
