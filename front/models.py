@@ -10,8 +10,8 @@ class TaskSet(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField()
 
-    time_from = models.DateTimeField()
-    time_to = models.DateTimeField()
+    time_from = models.DateTimeField(blank=True, null=True)
+    time_to = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return str(self.title)

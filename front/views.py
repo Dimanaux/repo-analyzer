@@ -103,21 +103,24 @@ def create_task_set(request):
             }
         )
     elif request.method == 'POST':
-        number = TaskSet.objects.filter(author=user).count() + 1
+        number: int = TaskSet.objects.filter(author=user).count() + 1
 
-        time_from = request.POST.get('time_from', '')
-        time_to = request.POST.get('time_to', '')
+        time_from: str = request.POST.get('time_from', None)
+        time_to: str = request.POST.get('time_to', None)
 
         taskset = TaskSet(
             author=user,
             number=number,
             title=request.POST.get('title'),
             description=request.POST.get('description'),
-            time_from=time_from,
-            time_to=time_to,
         )
+        if time_from != '':
+            taskset.time_from = time_from
+        if time_to != '':
+            taskset.time_to = time_to
+
         taskset.save()
-        return redirect('tasksets', number)
+        return redirect('taskset', number=number)
 
 
 def create_task(request, number: int):
@@ -151,4 +154,36 @@ def create_task(request, number: int):
         )
         task.save()
 
-        return redirect('taskset', ts.number)
+        return redirect('taskset', number=ts.number)
+
+def register(request):
+    user: User = request.user
+    if user.is_authenticated:
+        return redirect('index')
+    elif request.method == 'GET':
+        return render(
+            request,
+            'front/Register.html',
+            {
+                'user': user,
+            }
+        )
+    elif request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+        email = request.POST.get('email', None)
+
+        try:
+            User.objects.get(username=username)
+            return HttpResponse(username + ' is already taken')
+        except User.DoesNotExist:
+            if username and password and email:
+                user = User.objects.create_user(username, email, password)
+                user.save()
+
+                request.user = user
+        finally:
+            return redirect('index')
+
+
+

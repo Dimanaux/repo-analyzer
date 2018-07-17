@@ -10,13 +10,13 @@
         <h1>Create new taskset</h1>
     </div>
 
-    <form action="#" enctype="multipart/form-data" method="POST" class="row">
+    <form action="{% url 'create_task_set' %}" enctype="multipart/form-data" method="POST" class="row">
         {% csrf_token %}
 
         <div class="col-8">
             <div class="row form-group">
                 <label>Taskset title</label>
-                <input name="title" type="text" class="form-control" placeholder="Taskset 1k 1g"/>
+                <input name="title" type="text" class="form-control" placeholder="Taskset 1k 1g" required>
             </div>
 
             <div class="row form-group">

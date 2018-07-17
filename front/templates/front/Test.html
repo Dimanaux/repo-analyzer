@@ -4,11 +4,11 @@
     <h1>taskset #{{ taskset.number }} "{{ taskset.title }}" test</h1>
 
     <div class="row">
-        <form action="#" method="POST" enctype="multipart/form-data" class="row">
+        <form action="{% url 'test' %}" method="POST" enctype="multipart/form-data" class="row">
             {% csrf_token %}
             <div class="row">
                 <input type="text" name="link" class="form-control"
-                       placeholder="https://github.com/octocat/Hello-World">
+                       placeholder="https://github.com/octocat/Hello-World" required>
                 <input type="submit" class="btn btn-primary">
             </div>
         </form>

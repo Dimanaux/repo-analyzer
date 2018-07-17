@@ -42,6 +42,7 @@ def clone(url: str):
         repo = Repo.clone_from(url, path)
     except GitCommandError:
         repo = Repo(path)
+        repo.remotes.origin.pull()
     return repo
 
 

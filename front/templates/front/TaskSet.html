@@ -42,11 +42,11 @@
 
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary" href="/tasksets/{{ taskset.number }}/new" role="button">new task!</a>
+            <a class="btn btn-primary" href="{% url 'create_task' number=taskset.number %}" role="button">new task!</a>
         </div>
 
         <div class="col">
-            <a class="btn btn-success" href="/tasksets/{{ taskset.number }}/test" role="button">TEST!</a>
+            <a class="btn btn-success" href="{% url 'test' number=taskset.number %}" role="button">TEST!</a>
         </div>
     </div>
 

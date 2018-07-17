@@ -15,7 +15,7 @@
         <div class="col-8">
             <div class="row form-group">
                 <label>Task title</label>
-                <input name="title" type="text" class="form-control" placeholder="Task 1-0-1"/>
+                <input name="title" type="text" class="form-control" placeholder="Task 1-0-1" required>
             </div>
 
             <div class="row form-group">
@@ -23,17 +23,16 @@
                 <textarea name="description" class="form-control" placeholder="Turn on your computer"></textarea>
             </div>
         </div>
-
         <div class="col-1"></div>
 
         <div class="col-3">
             <div class="row form-group">
-                <label>extension</label>
-                <input name="time_from" type="datetime-local" class="form-control">
+                <label for="timeFromInputField">extension</label>
+                <input name="time_from" type="datetime-local" class="form-control" id="timeFromInputField" required>
             </div>
             <div class="row form-group">
-                <label>deadline</label>
-                <input name="time_to" type="datetime-local" class="form-control">
+                <label for="timeToInputField">deadline</label>
+                <input name="time_to" type="datetime-local" class="form-control" id="timeToInputField" required>
             </div>
             <div class="row form-group">
                 <input type="submit" class="btn btn-primary" value="save task">
