@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timedelta
 
-from git import Repo
+from git import Repo, GitCommandError
 from git.objects.commit import Commit
 
 from front.models import Task
@@ -38,8 +38,10 @@ def clone(url: str):
     path = os.path.join(BASE_DIR, 'res', repo_name)
     create_dir(path)
 
-    repo = Repo.clone_from(url, path)
-
+    try:
+        repo = Repo.clone_from(url, path)
+    except GitCommandError:
+        repo = Repo(path)
     return repo
 
 
@@ -47,7 +49,7 @@ def extract_repo_name(url: str):
     """
     Gets repository name from repository url.
 
-    >> extract_repo_name('https://foo.bar/baz/foo-bar.baz.git'
+    >> extract_repo_name('https://foo.bar/baz/foo-bar.baz.git')
     'foo-bar.baz'
 
     Args:
@@ -56,9 +58,15 @@ def extract_repo_name(url: str):
     Returns:
          str: Dir name for repo.
     """
+
     # extract file_name from url
     # eg foo-bar.baz.git
     repo_name_with_extension = url.split('/')[-1]
+
+    try:
+        repo_name_with_extension.index('.git')
+    except ValueError:
+        return repo_name_with_extension
 
     # split by . in order to get rid of extension .git
     split = repo_name_with_extension.split('.')

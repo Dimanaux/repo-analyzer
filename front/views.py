@@ -2,14 +2,13 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from git import Repo
 
 from front import repo
 from front.models import (
     TaskSet,
     Task,
 )
-
-from git import Repo
 
 
 def logout_view(request):
@@ -60,36 +59,39 @@ def index(request):
 
 
 def test(request, number: int):
+    user: User = request.user
+    taskset: TaskSet = TaskSet.objects.get(number=number)
+
+    result = []
+
+    data = {
+        'user': user,
+        'taskset': taskset,
+        'display': 'none',
+        'results': result,
+    }
+
     if request.method == 'GET':
         return render(
             request,
-            'front/test.html',
-            {
-                'user': request.user,
-            }
+            'front/Test.html',
+            data,
         )
     elif request.method == 'POST':
-        taskset: TaskSet = TaskSet.objects.get(number=number)
-        tasks: list = list(Task.objects.filter(task_set=taskset))
+        tasks: list = list(Task.objects.filter(task_set=taskset).order_by('number'))
 
         url: str = request.POST.get('link')
         repository: Repo = repo.clone(url)
 
-        commits: list = list(repo.commits(repository))
-
-        # result = [True for t in tasks if ]
-
-        # todo
+        data['results'] = [(t, repo.has_commit(repository, t)) for t in tasks]
+        data['display'] = 'block'
 
         return render(
             request,
             'front/Test.html',
-            {
-                'user': request.user,
-                'tasks': result,
-                'show_tests': True,
-            }
+            data,
         )
+
 
 def create_task_set(request):
     user: User = request.user
@@ -107,7 +109,7 @@ def create_task_set(request):
     elif request.method == 'POST':
         number = TaskSet.objects.filter(author=user).count() + 1
 
-        time_from = request.POST.get('time_from', '')  # todo parse date
+        time_from = request.POST.get('time_from', '')
         time_to = request.POST.get('time_to', '')
 
         taskset = TaskSet(

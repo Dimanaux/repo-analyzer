@@ -5,18 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ taskset.title }}</h1>
+    <div class="row">
+        <h1>{{ taskset.title }}</h1>
+    </div>
+        <a class="btn btn-primary" href="/tasksets/{{ taskset.number }}/test" role="button">TEST!</a>
+
     {% for task in tasks %}
         <div class="row">
-            <div class="col">{{ task.number }} : {{ task.title }}</div>
+            <div class="col">{{ task.number }}. {{ task.title }}</div>
             <div class="col">{{ task.description }}</div>
             <div class="col">
-                <div>
-                    {{ task.time_from }}
-                </div>
-                <div>
-                    {{ task.time_to }}
-                </div>
+                <div>{{ task.time_from }}</div>
+                <div>{{ task.time_to }}</div>
+            </div>
+            <div class="col">
+
+                <button type="button" class="btn btn-primary">edit</button>
             </div>
         </div>
     {% endfor %}

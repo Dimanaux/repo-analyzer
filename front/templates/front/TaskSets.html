@@ -5,21 +5,35 @@
 {% endblock %}
 
 {% block content %}
-    {% for ts in tasksets %}
-        <div class="row">
-            <div class="col">
-                {{ ts.author }}
-            </div>
-            <div class="col">
-                <a href="/tasksets/{{ ts.number }}/">
-                    {{ ts.title }}
-                </a>
-            </div>
-            <div class="col">
-                {{ ts.description }}
-            </div>
-        </div>
-    {% endfor %}
+    <h1>Your tasksets</h1>
+    <ul class="list-group">
+        {% for ts in tasksets %}
+            <li class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col">
+                        <a href="/tasksets/{{ ts.number }}/">
+                            {{ ts.number }}.
+                            {{ ts.title }}
+                        </a>
+                    </div>
+                    <div class="col">
+                        {{ ts.description }}
+                    </div>
+                    <div class="col">
+                        <div>{{ ts.time_from }}</div>
+                        <div>{{ ts.time_to }}</div>
+                    </div>
+
+                    <div class="col">
+                        <a class="btn btn-primary" href="/tasksets/{{ ts.number }}/" role="button">view</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a class="btn btn-primary" href="/tasksets/new/" role="button">New Taskset</a>
+
 {% endblock %}
 
 
