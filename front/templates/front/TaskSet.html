@@ -8,20 +8,46 @@
     <div class="row">
         <h1>{{ taskset.title }}</h1>
     </div>
-        <a class="btn btn-primary" href="/tasksets/{{ taskset.number }}/test" role="button">TEST!</a>
 
-    {% for task in tasks %}
+    <div class="row">
+        {{ taskset.description }}
+    </div>
+
+
+    <div class="row">
+        <h3>Tasks:</h3>
+    </div>
+
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="row">
+                <div class="col">{{ task.number }}. {{ task.title }}</div>
+                <div class="col">{{ task.description }}</div>
+                <div class="col">
+                    <div>{{ task.time_from }}</div>
+                    <div>{{ task.time_to }}</div>
+                </div>
+                <div class="col">
+
+                    <button type="button" class="btn btn-primary">edit</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
         <div class="row">
-            <div class="col">{{ task.number }}. {{ task.title }}</div>
-            <div class="col">{{ task.description }}</div>
-            <div class="col">
-                <div>{{ task.time_from }}</div>
-                <div>{{ task.time_to }}</div>
-            </div>
-            <div class="col">
-
-                <button type="button" class="btn btn-primary">edit</button>
-            </div>
+            <h6>No tasks</h6>
         </div>
-    {% endfor %}
+    {% endif %}
+
+
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="/tasksets/{{ taskset.number }}/new" role="button">new task!</a>
+        </div>
+
+        <div class="col">
+            <a class="btn btn-success" href="/tasksets/{{ taskset.number }}/test" role="button">TEST!</a>
+        </div>
+    </div>
+
 {% endblock %}

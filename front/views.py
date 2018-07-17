@@ -54,10 +54,6 @@ def task_set(request, number: int):
         )
 
 
-def index(request):
-    return redirect('tasksets')
-
-
 def test(request, number: int):
     user: User = request.user
     taskset: TaskSet = TaskSet.objects.get(number=number)
@@ -121,7 +117,7 @@ def create_task_set(request):
             time_to=time_to,
         )
         taskset.save()
-        return redirect('taskset/' + number)
+        return redirect('tasksets', number)
 
 
 def create_task(request, number: int):
@@ -129,19 +125,21 @@ def create_task(request, number: int):
     if not user.is_authenticated:
         return redirect('login')
     elif request.method == 'GET':
+        taskset = TaskSet.objects.get(number=number)
         return render(
             request,
             'front/NewTask.html',
             {
                 'user': user,
+                'taskset': taskset,
             }
         )
     elif request.method == 'POST':
-        ts = TaskSet.objects.get(number=number)
-        num = Task.objects.filter(task_set=task_set).count() + 1
+        ts: TaskSet = TaskSet.objects.get(number=number)
+        num: int = len(Task.objects.filter(task_set=ts)) + 1
 
-        time_from = request.POST.get('time_from', '')  # todo parse date
-        time_to = request.POST.get('time_to', '')
+        time_from = request.POST.get('time_from', None)
+        time_to = request.POST.get('time_to', None)
 
         task = Task(
             task_set=ts,
@@ -152,3 +150,5 @@ def create_task(request, number: int):
             time_from=time_from,
         )
         task.save()
+
+        return redirect('taskset', ts.number)

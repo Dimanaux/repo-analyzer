@@ -1,27 +1,27 @@
 {% extends 'front/base.html' %}
 
 {% block title %}
-    Create new Taskset
+    Create new task
 {% endblock %}
 
 {% block content %}
-
     <div class="row">
-        <h1>Create new taskset</h1>
+        <h1>Create new task for {{ taskset.title }}</h1>
     </div>
+
 
     <form action="#" enctype="multipart/form-data" method="POST" class="row">
         {% csrf_token %}
 
         <div class="col-8">
             <div class="row form-group">
-                <label>Taskset title</label>
-                <input name="title" type="text" class="form-control" placeholder="Taskset 1k 1g"/>
+                <label>Task title</label>
+                <input name="title" type="text" class="form-control" placeholder="Task 1-0-1"/>
             </div>
 
             <div class="row form-group">
-                <label>Taskset description (optional)</label>
-                <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                <label>Task description (optional)</label>
+                <textarea name="description" class="form-control" placeholder="Turn on your computer"></textarea>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
 
         <div class="col-3">
             <div class="row form-group">
-                <label>time_from</label>
+                <label>extension</label>
                 <input name="time_from" type="datetime-local" class="form-control">
             </div>
             <div class="row form-group">
