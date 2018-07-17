@@ -9,9 +9,9 @@
         <h1>{{ taskset.title }}</h1>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
         {{ taskset.description }}
-    </div>
+    </div>-->
 
 
     <div class="row">
@@ -21,15 +21,15 @@
     {% if tasks %}
         {% for task in tasks %}
             <div class="row">
-                <div class="col">{{ task.number }}. {{ task.title }}</div>
-                <div class="col">{{ task.description }}</div>
-                <div class="col">
+                <div class="col" style="outline: 1px solid #666;">{{ task.number }}. {{ task.title }}</div>
+                <div class="col" style="outline: 1px solid #666;">{{ task.description }}</div>
+                <div class="col" style="outline: 1px solid #666;">
                     <div>{{ task.time_from }}</div>
                     <div>{{ task.time_to }}</div>
                 </div>
                 <div class="col">
 
-                    <button type="button" class="btn btn-primary">edit</button>
+                    <a href=""><img src="../../static/images/edit.png" style="width: 64px;"></a>
                 </div>
             </div>
         {% endfor %}
@@ -40,12 +40,12 @@
     {% endif %}
 
 
-    <div class="row">
-        <div class="col">
+    <div class="row" style="margin-top: 5vh;">
+        <div class="col-6">
             <a class="btn btn-primary" href="{% url 'create_task' number=taskset.number %}" role="button">new task!</a>
         </div>
 
-        <div class="col">
+        <div class="col-4 text-right">
             <a class="btn btn-success" href="{% url 'test' number=taskset.number %}" role="button">TEST!</a>
         </div>
     </div>

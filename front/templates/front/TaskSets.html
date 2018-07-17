@@ -1,38 +1,41 @@
 {% extends 'front/base.html' %}
 
 {% block title %}
-    Tasksets
+Tasksets
 {% endblock %}
 
 {% block content %}
-    <h1>Your tasksets</h1>
-    <ul class="list-group">
-        {% for ts in tasksets %}
-            <li class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col">
-                        <a href="/tasksets/{{ ts.number }}/">
-                            {{ ts.number }}.
-                            {{ ts.title }}
-                        </a>
-                    </div>
-                    <div class="col">
-                        {{ ts.description }}
-                    </div>
-                    <div class="col">
-                        <div>{{ ts.time_from }}</div>
-                        <div>{{ ts.time_to }}</div>
-                    </div>
+<h2>Your tasksets</h2>
+<ul class="list-group">
+    {% for ts in tasksets %}
+    <li class="list-group-item list-group-item-action">
+        <div class="row">
+            <div class="col ">
+                <a href="/tasksets/{{ ts.number }}/">
+                    {{ ts.number }}.
+                    {{ ts.title }}
+                </a>
+            </div>
+            <div class="col">
+                {{ ts.description }}
+            </div>
+            <div class="col">
+                <div>{{ ts.time_from }}</div>
+                <div>{{ ts.time_to }}</div>
+            </div>
 
-                    <div class="col">
-                        <a class="btn btn-primary" href="/tasksets/{{ ts.number }}/" role="button">view</a>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a class="btn btn-primary" href="{% url 'create_task_set' %}" role="button">New Taskset</a>
+            <div class="col">
+                <a class="btn btn-primary" href="/tasksets/{{ ts.number }}/" role="button">view</a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<div class="row">
+    <div class="col-12 text-right">
+        <a href="{% url 'create_task_set' %}"> <img src="../../static/images/add.png" style="width: 64px;"></a>
+    </div>
+</div>
 {% endblock %}
-
+<img href="">
 

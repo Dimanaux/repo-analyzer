@@ -1,3 +1,9 @@
 ﻿body {
     background-color: whitesmoke;
 }
+.btn-primary{
+    background-color: #343a40;
+}
+a :hover{
+   outline: 1px solid #666;
+}
