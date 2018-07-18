@@ -4,7 +4,7 @@
     <h1>taskset #{{ taskset.number }} "{{ taskset.title }}" test</h1>
 
     <div class="row">
-        <form action="{% url 'test' %}" method="POST" enctype="multipart/form-data" class="row">
+        <form action="{% url 'test' number=taskset.number %}" method="POST" enctype="multipart/form-data" class="row">
             {% csrf_token %}
             <div class="row">
                 <input type="text" name="link" class="form-control"
@@ -15,24 +15,26 @@
     </div>
 
 
-    <div class="container" style="display: {{ display }}">
-        {% for task, result in results %}
-            <div class="row">
-                <div class="col">{{ task.number }}. {{ task.title }}</div>
-                <div class="col">
-                    <div>{{ task.time_from }}</div>
-                    <div>{{ task.time_to }}</div>
-                </div>
-                <div class="col">
+    {% if display %}
+        <div class="container">
+            {% for task, result in results %}
+                <div class="row">
+                    <div class="col">{{ task.number }}. {{ task.title }}</div>
+                    <div class="col">
+                        <div>{{ task.time_from }}</div>
+                        <div>{{ task.time_to }}</div>
+                    </div>
+                    <div class="col">
 
-                    {% if result %}
-                        <button type="button" class="btn btn-success">Success</button>
-                    {% else %}
-                        <button type="button" class="btn btn-danger">Failure</button>
-                    {% endif %}
-                </div>
+                        {% if result %}
+                            <button type="button" class="btn btn-success">Success</button>
+                        {% else %}
+                            <button type="button" class="btn btn-danger">Failure</button>
+                        {% endif %}
+                    </div>
 
-            </div>
-        {% endfor %}
-    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

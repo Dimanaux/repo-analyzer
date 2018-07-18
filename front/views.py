@@ -63,7 +63,7 @@ def test(request, number: int):
     data = {
         'user': user,
         'taskset': taskset,
-        'display': 'none',
+        'display': False,
         'results': result,
     }
 
@@ -80,7 +80,7 @@ def test(request, number: int):
         repository: Repo = repo.clone(url)
 
         data['results'] = [(t, repo.has_commit(repository, t)) for t in tasks]
-        data['display'] = 'block'
+        data['display'] = True
 
         return render(
             request,
@@ -156,6 +156,7 @@ def create_task(request, number: int):
 
         return redirect('taskset', number=ts.number)
 
+
 def register(request):
     user: User = request.user
     if user.is_authenticated:
@@ -184,6 +185,3 @@ def register(request):
                 request.user = user
         finally:
             return redirect('index')
-
-
-
