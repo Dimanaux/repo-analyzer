@@ -128,7 +128,7 @@ def create_task(request, number: int):
     if not user.is_authenticated:
         return redirect('login')
     elif request.method == 'GET':
-        taskset = TaskSet.objects.get(number=number)
+        taskset = TaskSet.objects.filter(author=user).get(number=number)
         return render(
             request,
             'front/NewTask.html',
